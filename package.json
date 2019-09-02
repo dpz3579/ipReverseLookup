@@ -1,0 +1,27 @@
+{
+  "name": "ipreverselookup",
+  "version": "1.0.0",
+  "description": "ip reverse lookup from the ip address",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dpz3579/ipReverseLookup.git"
+  },
+  "keywords": [
+    "ipaddress",
+    "dnsreverselookup",
+    "iplookup"
+  ],
+  "author": "dpz3579",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dpz3579/ipReverseLookup/issues"
+  },
+  "homepage": "https://github.com/dpz3579/ipReverseLookup#readme",
+  "dependencies": {
+    "mmdb-reader": "/Users/dipesh/personal/testnpm1.2.0"
+  }
+}
