@@ -222,7 +222,7 @@ Reader.prototype.findMetaPosition = function() {
   // Can't just check for presence of lastIndexOf because it's present (but different)
   // on previous node versions (comes from UInt8Array)
   if (Buffer.prototype.hasOwnProperty('lastIndexOf')) {
-    metaPosition = buf.lastIndexOf(new Buffer(metaMarker, 'hex'));
+    metaPosition = buf.lastIndexOf(new Buffer.from(metaMarker, 'hex'));
 
     if (metaPosition === -1) {
       throw new Error('Bad DB');

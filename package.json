@@ -20,8 +20,5 @@
   "bugs": {
     "url": "https://github.com/dpz3579/ipReverseLookup/issues"
   },
-  "homepage": "https://github.com/dpz3579/ipReverseLookup#readme",
-  "dependencies": {
-    "mmdb-reader": "/Users/dipesh/personal/testnpm1.2.0"
-  }
+  "homepage": "https://github.com/dpz3579/ipReverseLookup#readme"
 }
