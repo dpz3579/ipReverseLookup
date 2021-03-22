@@ -5,4 +5,5 @@
 
 tar -xf GeoLite2-Country_20210316.tar.gz GeoLite2-Country_20210316/GeoLite2-Country.mmdb
 mv GeoLite2-Country_20210316/GeoLite2-Country.mmdb .
+rm -rf GeoLite2-Country_20210316/
 file GeoLite2-Country.mmdb
