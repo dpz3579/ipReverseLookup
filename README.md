@@ -1,7 +1,7 @@
 # ipReverseLookup
 Reverse Lookup to get country detail from the requesting IP.
 
-# Setup 
+# Setup
 Getting IP address in req.ip in your NodeJS Application
 Follow either of the steps.
 
@@ -11,11 +11,11 @@ Follow either of the steps.
 >
 > https://stackoverflow.com/questions/30943112/get-ip-user-with-nginx-and-node
 
-**⚠️ : The Database is from 2nd Sept 2019, i'm trying to get more information, & will try to update this repo with latest database, as soon as possible.**
+**✅ : The Database is from 20210406 i.e. 6th Apr 2021, i'll try to keep on updating this repo with latest database, as soon as possible.**
 
 # Testing
 > npm test
-> 
+>
 > Eg if you IP address is **13.249.210.59**
 
 Response format :
