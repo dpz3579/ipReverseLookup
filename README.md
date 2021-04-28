@@ -11,7 +11,7 @@ Follow either of the steps.
 >
 > https://stackoverflow.com/questions/30943112/get-ip-user-with-nginx-and-node
 
-**✅ : The Database is from 20210406 i.e. 6th Apr 2021, i'll try to keep on updating this repo with latest database, as soon as possible.**
+**✅ : The Database is from 20210427 i.e. 27th Apr 2021, i'll try to keep on updating this repo with latest database, as soon as possible.**
 
 # Testing
 > npm test
@@ -22,6 +22,8 @@ Response format :
 
 ```
 {
+  phoneCode: '1', // This will appear if there is data present in countryinfo/phonecode.json
+  currency: 'USD', // This will appear if there is data present in countryinfo/currency.json
   continent: {
     code: 'NA',
     geoname_id: 6255149,
