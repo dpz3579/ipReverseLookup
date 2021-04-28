@@ -1,6 +1,21 @@
 # ipReverseLookup
 Reverse Lookup to get country detail from the requesting IP.
 
+# NPM install guide
+> npm i --save https://github.com/dpz3579/ipReverseLookup.git
+
+
+# Usage
+
+```
+const { getReverseIp } = require('ipreverselookup');
+
+getReverseIp(ip, (resp)=>{
+  // resp will be null if IP is not valid or malformed eg if IP is :::1, it will return null
+  console.log(resp);
+});
+```
+
 # Setup
 Getting IP address in req.ip in your NodeJS Application
 Follow either of the steps.
@@ -17,6 +32,7 @@ Follow either of the steps.
 > npm test
 >
 > Eg if you IP address is **13.249.210.59**
+
 
 Response format :
 
