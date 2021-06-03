@@ -1,5 +1,14 @@
 # ipReverseLookup
+
 Reverse Lookup to get country detail from the requesting IP.
+
+[![GitHub stars](https://img.shields.io/github/stars/dpz3579/ipReverseLookup?style=flat-square)](https://github.com/dpz3579/ipReverseLookup/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/dpz3579/ipReverseLookup?label=issues&style=flat-square)](https://github.com/dpz3579/ipReverseLookup/issues)
+[![GitHub forks](https://img.shields.io/github/forks/dpz3579/ipReverseLookup?style=flat-square)](https://github.com/dpz3579/ipReverseLookup/network)
+[![GitHub license](https://img.shields.io/github/license/dpz3579/ipReverseLookup?style=flat-square)](https://github.com/dpz3579/ipReverseLookup)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
+
 
 # NPM install guide
 > npm i --save https://github.com/dpz3579/ipReverseLookup.git
@@ -26,7 +35,7 @@ Follow either of the steps.
 >
 > https://stackoverflow.com/questions/30943112/get-ip-user-with-nginx-and-node
 
-**✅ : The Database is from 20210427 i.e. 27th Apr 2021, i'll try to keep on updating this repo with latest database, as soon as possible.**
+**✅ : The Database is from 20210601 i.e. 1st Jun 2021, i'll try to keep on updating this repo with latest database, as soon as possible.**
 
 # Testing
 > npm test
