@@ -16,10 +16,17 @@ Reverse Lookup to get country detail from the requesting IP.
 
 # Usage
 
+> You can look at `example.js` for more detail.
+
 ```
 const { getReverseIp } = require('ipreverselookup');
 
 getReverseIp(ip, (resp)=>{
+  // resp will be null if IP is not valid or malformed eg if IP is :::1, it will return null
+  console.log(resp);
+});
+
+getReverseIp(ip, "city", (resp)=>{
   // resp will be null if IP is not valid or malformed eg if IP is :::1, it will return null
   console.log(resp);
 });
@@ -37,15 +44,16 @@ Follow either of the steps.
 
 **✅ : The Database is from 20210601 i.e. 1st Jun 2021, i'll try to keep on updating this repo with latest database, as soon as possible.**
 
-# Testing
-> npm test
+
+# Test an example
+> npm run example
 >
 > Eg if you IP address is **13.249.210.59**
 
 
 Response format :
 
-```
+``` json
 {
   phoneCode: '1', // This will appear if there is data present in countryinfo/phonecode.json
   currency: 'USD', // This will appear if there is data present in countryinfo/currency.json
@@ -91,5 +99,64 @@ Response format :
       'zh-CN': '美国'
     }
   }
+}
+```
+
+<br/>
+
+Response format "`city` passed as second argument":
+
+``` json
+{
+  continent: {
+    code: 'NA',
+    geoname_id: 6255149,
+    names: {
+      de: 'Nordamerika',
+      en: 'North America',
+      es: 'Norteamérica',
+      fr: 'Amérique du Nord',
+      ja: '北アメリカ',
+      'pt-BR': 'América do Norte',
+      ru: 'Северная Америка',
+      'zh-CN': '北美洲'
+    }
+  },
+  country: {
+    geoname_id: 6252001,
+    iso_code: 'US',
+    names: {
+      de: 'USA',
+      en: 'United States',
+      es: 'Estados Unidos',
+      fr: 'États-Unis',
+      ja: 'アメリカ合衆国',
+      'pt-BR': 'Estados Unidos',
+      ru: 'США',
+      'zh-CN': '美国'
+    }
+  },
+  location: {
+    accuracy_radius: 1000,
+    latitude: 37.751,
+    longitude: -97.822,
+    time_zone: 'America/Chicago'
+  },
+  registered_country: {
+    geoname_id: 6252001,
+    iso_code: 'US',
+    names: {
+      de: 'USA',
+      en: 'United States',
+      es: 'Estados Unidos',
+      fr: 'États-Unis',
+      ja: 'アメリカ合衆国',
+      'pt-BR': 'Estados Unidos',
+      ru: 'США',
+      'zh-CN': '美国'
+    }
+  },
+  phoneCode: '1', // This will appear if there is data present in countryinfo/phonecode.json
+  currency: 'USD' // This will appear if there is data present in countryinfo/currency.json
 }
 ```
