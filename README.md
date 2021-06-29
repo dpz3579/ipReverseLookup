@@ -19,7 +19,7 @@ Reverse Lookup to get country detail from the requesting IP.
 > You can look at `example.js` for more detail.
 
 ```
-const { getReverseIp } = require('ipreverselookup');
+const { getReverseIp } = require("ipreverselookup");
 
 getReverseIp(ip, (resp)=>{
   // resp will be null if IP is not valid or malformed eg if IP is :::1, it will return null
@@ -55,48 +55,48 @@ Response format :
 
 ``` json
 {
-  phoneCode: '1', // This will appear if there is data present in countryinfo/phonecode.json
-  currency: 'USD', // This will appear if there is data present in countryinfo/currency.json
-  continent: {
-    code: 'NA',
-    geoname_id: 6255149,
-    names: {
-      de: 'Nordamerika',
-      en: 'North America',
-      es: 'Norteamérica',
-      fr: 'Amérique du Nord',
-      ja: '北アメリカ',
-      'pt-BR': 'América do Norte',
-      ru: 'Северная Америка',
-      'zh-CN': '北美洲'
+  "phoneCode": "1", // This will appear if there is data present in countryinfo/phonecode.json
+  "currency": "USD", // This will appear if there is data present in countryinfo/currency.json
+  "continent": {
+    "code": "NA",
+    "geoname_id": 6255149,
+    "names": {
+      "de": "Nordamerika",
+      "en": "North America",
+      "es": "Norteamérica",
+      "fr": "Amérique du Nord",
+      "ja": "北アメリカ",
+      "pt-BR": "América do Norte",
+      "ru": "Северная Америка",
+      "zh-CN": "北美洲"
     }
   },
-  country: {
-    geoname_id: 6252001,
-    iso_code: 'US',
-    names: {
-      de: 'USA',
-      en: 'United States',
-      es: 'Estados Unidos',
-      fr: 'États-Unis',
-      ja: 'アメリカ合衆国',
-      'pt-BR': 'Estados Unidos',
-      ru: 'США',
-      'zh-CN': '美国'
+  "country": {
+    "geoname_id": 6252001,
+    "iso_code": "US",
+    "names": {
+      "de": "USA",
+      "en": "United States",
+      "es": "Estados Unidos",
+      "fr": "États-Unis",
+      "ja": "アメリカ合衆国",
+      "pt-BR": "Estados Unidos",
+      "ru": "США",
+      "zh-CN": "美国"
     }
   },
-  registered_country: {
-    geoname_id: 6252001,
-    iso_code: 'US',
-    names: {
-      de: 'USA',
-      en: 'United States',
-      es: 'Estados Unidos',
-      fr: 'États-Unis',
-      ja: 'アメリカ合衆国',
-      'pt-BR': 'Estados Unidos',
-      ru: 'США',
-      'zh-CN': '美国'
+  "registered_country": {
+    "geoname_id": 6252001,
+    "iso_code": "US",
+    "names": {
+      "de": "USA",
+      "en": "United States",
+      "es": "Estados Unidos",
+      "fr": "États-Unis",
+      "ja": "アメリカ合衆国",
+      "pt-BR": "Estados Unidos",
+      "ru": "США",
+      "zh-CN": "美国"
     }
   }
 }
@@ -104,59 +104,59 @@ Response format :
 
 <br/>
 
-Response format "`city` passed as second argument":
+Response format when `city` is passed as second argument:
 
 ``` json
 {
-  continent: {
-    code: 'NA',
-    geoname_id: 6255149,
-    names: {
-      de: 'Nordamerika',
-      en: 'North America',
-      es: 'Norteamérica',
-      fr: 'Amérique du Nord',
-      ja: '北アメリカ',
-      'pt-BR': 'América do Norte',
-      ru: 'Северная Америка',
-      'zh-CN': '北美洲'
+  "continent": {
+    "code": "NA",
+    "geoname_id": 6255149,
+    "names": {
+      "de": "Nordamerika",
+      "en": "North America",
+      "es": "Norteamérica",
+      "fr": "Amérique du Nord",
+      "ja": "北アメリカ",
+      "pt-BR": "América do Norte",
+      "ru": "Северная Америка",
+      "zh-CN": "北美洲"
     }
   },
-  country: {
-    geoname_id: 6252001,
-    iso_code: 'US',
-    names: {
-      de: 'USA',
-      en: 'United States',
-      es: 'Estados Unidos',
-      fr: 'États-Unis',
-      ja: 'アメリカ合衆国',
-      'pt-BR': 'Estados Unidos',
-      ru: 'США',
-      'zh-CN': '美国'
+  "country": {
+    "geoname_id": 6252001,
+    "iso_code": "US",
+    "names": {
+      "de": "USA",
+      "en": "United States",
+      "es": "Estados Unidos",
+      "fr": "États-Unis",
+      "ja": "アメリカ合衆国",
+      "pt-BR": "Estados Unidos",
+      "ru": "США",
+      "zh-CN": "美国"
     }
   },
-  location: {
-    accuracy_radius: 1000,
-    latitude: 37.751,
-    longitude: -97.822,
-    time_zone: 'America/Chicago'
+  "location": {
+    "accuracy_radius": 1000,
+    "latitude": 37.751,
+    "longitude": -97.822,
+    "time_zone": "America/Chicago"
   },
-  registered_country: {
-    geoname_id: 6252001,
-    iso_code: 'US',
-    names: {
-      de: 'USA',
-      en: 'United States',
-      es: 'Estados Unidos',
-      fr: 'États-Unis',
-      ja: 'アメリカ合衆国',
-      'pt-BR': 'Estados Unidos',
-      ru: 'США',
-      'zh-CN': '美国'
+  "registered_country": {
+    "geoname_id": 6252001,
+    "iso_code": "US",
+    "names": {
+      "de": "USA",
+      "en": "United States",
+      "es": "Estados Unidos",
+      "fr": "États-Unis",
+      "ja": "アメリカ合衆国",
+      "pt-BR": "Estados Unidos",
+      "ru": "США",
+      "zh-CN": "美国"
     }
   },
-  phoneCode: '1', // This will appear if there is data present in countryinfo/phonecode.json
-  currency: 'USD' // This will appear if there is data present in countryinfo/currency.json
+  "phoneCode": "1", // This will appear if there is data present in countryinfo/phonecode.json
+  "currency": "USD" // This will appear if there is data present in countryinfo/currency.json
 }
 ```
