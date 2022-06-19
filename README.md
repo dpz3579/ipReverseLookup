@@ -42,7 +42,7 @@ Follow either of the steps.
 >
 > https://stackoverflow.com/questions/30943112/get-ip-user-with-nginx-and-node
 
-**✅ : The Database is from 20210601 i.e. 1st Jun 2021, i'll try to keep on updating this repo with latest database, as soon as possible.**
+**✅ : The Database is from 20220617 i.e. 17th Jun 2022, i'll try to keep on updating this repo with latest database, as soon as possible.**
 
 
 # Test an example
