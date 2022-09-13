@@ -19,8 +19,16 @@ Reverse Lookup to get country detail from the requesting IP.
 > You can look at `example.js` for more detail.
 
 ```
-const { getReverseIp } = require("ipreverselookup");
+const { initReverseLookup, getReverseIp } = require('ipreverselookup');
 
+const countryDBName = "db/GeoLite2-Country.mmdb"; // Your mmdb db path
+const cityDBName = "db/GeoLite2-City.mmdb"; // Your mmdb city db path
+
+initReverseLookup(countryDBName, cityDBName, (err)=>{
+  if(err) console.log("The insitalisation was not done",err);
+});
+
+<!-- This is to be called when only the initialisation is done. -->
 getReverseIp(ip, (resp)=>{
   // resp will be null if IP is not valid or malformed eg if IP is :::1, it will return null
   console.log(resp);
@@ -42,11 +50,16 @@ Follow either of the steps.
 >
 > https://stackoverflow.com/questions/30943112/get-ip-user-with-nginx-and-node
 
-**✅ : The Database is from 20220617 i.e. 17th Jun 2022, i'll try to keep on updating this repo with latest database, as soon as possible.**
+**✅ : The Database can be found in old commits, but i suggest you to register with MaxMind & get your own database.**
+
+**Link here.**
+> https://dev.maxmind.com/geoip/geolite2-free-geolocation-data?lang=en
 
 
 # Test an example
 > npm run example
+>
+> Make sure you change the dbpath in ```example.js``` before you run test.
 >
 > Eg if you IP address is **13.249.210.59**
 
