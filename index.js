@@ -1,21 +1,42 @@
-const Reader = require('./rawReaderFiles/DBReader');
-const dirPath = __dirname;
-const countryDBName = "/GeoLite2-Country.mmdb";
-const cityDBName = "/GeoLite2-City.mmdb";
-let dbPath = dirPath + countryDBName;
+const Reader = require("./rawReaderFiles/DBReader");
+const fs = require("fs");
 
-const reader = new Reader(dbPath);
+let countryDBName = "";
+let cityDBName = "";
 
-const phonecode = require('./countryinfo/phonecode.json');
-const currency = require('./countryinfo/currency.json');
+let reader = null;
+
+const phonecode = require("./countryinfo/phonecode.json");
+const currency = require("./countryinfo/currency.json");
+
+const initReverseLookup = (countryDbPath, cityDbPath, cb) => {
+  reader = new Reader(countryDbPath); // By default set reader to the country DB Path.
+
+  if(typeof cityDbPath == "function"){
+    cb = cityDbPath;
+    try{
+      if (countryDbPath && fs.existsSync(countryDbPath)) cb(null);
+      else cb("File does not exist!");
+    } catch(err) {
+      cb(err);
+    }
+  }else{
+    try{
+      if (countryDbPath && fs.existsSync(countryDbPath) && cityDbPath && fs.existsSync(cityDbPath)) cb(null);
+      else cb("File does not exist!");
+    } catch(err) {
+      cb(err);
+    }
+  }
+}
 
 const getReverseIp = (remoteIP, category ,cb) => {
   if(typeof category == "function"){
-    dbPath = dirPath + countryDBName;
+    dbPath = countryDBName;
     reader.reloadSync(dbPath);
     cb = category;
   }else if(category && typeof category == "string" && category.toLowerCase() == "city"){
-    dbPath = dirPath + cityDBName;
+    dbPath = cityDBName;
     reader.reloadSync(dbPath);
   }
 
@@ -28,5 +49,6 @@ const getReverseIp = (remoteIP, category ,cb) => {
 }
 
 module.exports = {
+  initReverseLookup,
   getReverseIp
 };
