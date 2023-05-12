@@ -9,39 +9,34 @@ let reader = null;
 const phonecode = require("./countryinfo/phonecode.json");
 const currency = require("./countryinfo/currency.json");
 
-async function initReverseLookup(countryDbPath, cityDbPath) {
+const initReverseLookup = (countryDbPath, cityDbPath, cb) => {
   reader = new Reader(countryDbPath); // By default set reader to the country DB Path.
 
-  if(countryDbPath && cityDbPath){
+  if(typeof cityDbPath == "function"){
+    cb = cityDbPath;
     try{
-      if (countryDbPath && fs.existsSync(countryDbPath) && cityDbPath && fs.existsSync(cityDbPath)){
-        countryDBName = countryDbPath;
-        cityDBName = cityDbPath;
-        return null;
-      }
-      else return "File does not exist!";
+      if (countryDbPath && fs.existsSync(countryDbPath)) cb(null);
+      else cb("File does not exist!");
     } catch(err) {
-      return err;
+      cb(err);
     }
   }else{
     try{
-      if (countryDbPath && fs.existsSync(countryDbPath)){
-        countryDBName = countryDbPath;
-        return null;
-      }
-      else return "File does not exist!";
+      if (countryDbPath && fs.existsSync(countryDbPath) && cityDbPath && fs.existsSync(cityDbPath)) cb(null);
+      else cb("File does not exist!");
     } catch(err) {
-      return err;
+      cb(err);
     }
   }
 }
 
-async function getReverseIp(remoteIP, category) {
-  if(category && typeof category == "string" && category.toLowerCase() == "city"){
-    dbPath = cityDBName;
-    reader.reloadSync(dbPath);
-  }else{
+const getReverseIp = (remoteIP, category ,cb) => {
+  if(typeof category == "function"){
     dbPath = countryDBName;
+    reader.reloadSync(dbPath);
+    cb = category;
+  }else if(category && typeof category == "string" && category.toLowerCase() == "city"){
+    dbPath = cityDBName;
     reader.reloadSync(dbPath);
   }
 
@@ -50,7 +45,7 @@ async function getReverseIp(remoteIP, category) {
     if(phonecode[resp.country.iso_code]) resp.phoneCode = phonecode[resp.country.iso_code];
     if(currency[resp.country.iso_code]) resp.currency = currency[resp.country.iso_code];
   }
-  return resp;
+  cb(resp);
 }
 
 module.exports = {

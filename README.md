@@ -24,20 +24,15 @@ const { initReverseLookup, getReverseIp } = require('ipreverselookup');
 const countryDBName = "db/GeoLite2-Country.mmdb"; // Your mmdb db path
 const cityDBName = "db/GeoLite2-City.mmdb"; // Your mmdb city db path
 
-initReverseLookup(countryDBName, cityDBName, (err)=>{
-  if(err) console.log("The insitalisation was not done",err);
-});
+const err = await initReverseLookup(countryDBName, cityDBName); // It will return null, if files are loaded successfully, if it returns anything else that's an error.
+console.log("err",err);
 
 <!-- This is to be called when only the initialisation is done. -->
-getReverseIp(ip, (resp)=>{
-  // resp will be null if IP is not valid or malformed eg if IP is :::1, it will return null
-  console.log(resp);
-});
+const resp = await getReverseIp(ip); // resp will be null if IP is not valid or malformed eg if IP is :::1, it will return null
+console.log("resp",JSON.stringify(resp, 0, 2));
 
-getReverseIp(ip, "city", (resp)=>{
-  // resp will be null if IP is not valid or malformed eg if IP is :::1, it will return null
-  console.log(resp);
-});
+const resp = await getReverseIp(ip, "city"); // resp will be null if IP is not valid or malformed eg if IP is :::1, it will return null
+console.log("resp",JSON.stringify(resp, 0, 2));
 ```
 
 # Setup
@@ -61,57 +56,58 @@ Follow either of the steps.
 >
 > Make sure you change the dbpath in ```example.js``` before you run test.
 >
-> Eg if you IP address is **13.249.210.59**
+> Eg if you IP address is **212.30.37.147**
 
 
 Response format :
 
 ``` json
 {
-  "phoneCode": "1", // This will appear if there is data present in countryinfo/phonecode.json
-  "currency": "USD", // This will appear if there is data present in countryinfo/currency.json
   "continent": {
-    "code": "NA",
-    "geoname_id": 6255149,
+    "code": "EU",
+    "geoname_id": 6255148,
     "names": {
-      "de": "Nordamerika",
-      "en": "North America",
-      "es": "Norteamérica",
-      "fr": "Amérique du Nord",
-      "ja": "北アメリカ",
-      "pt-BR": "América do Norte",
-      "ru": "Северная Америка",
-      "zh-CN": "北美洲"
+      "de": "Europa",
+      "en": "Europe",
+      "es": "Europa",
+      "fr": "Europe",
+      "ja": "ヨーロッパ",
+      "pt-BR": "Europa",
+      "ru": "Европа",
+      "zh-CN": "欧洲"
     }
   },
   "country": {
-    "geoname_id": 6252001,
-    "iso_code": "US",
+    "geoname_id": 2750405,
+    "is_in_european_union": true,
+    "iso_code": "NL",
     "names": {
-      "de": "USA",
-      "en": "United States",
-      "es": "Estados Unidos",
-      "fr": "États-Unis",
-      "ja": "アメリカ合衆国",
-      "pt-BR": "Estados Unidos",
-      "ru": "США",
-      "zh-CN": "美国"
+      "de": "Niederlande",
+      "en": "Netherlands",
+      "es": "Holanda",
+      "fr": "Pays-Bas",
+      "ja": "オランダ王国",
+      "pt-BR": "Holanda",
+      "ru": "Нидерланды",
+      "zh-CN": "荷兰"
     }
   },
   "registered_country": {
-    "geoname_id": 6252001,
-    "iso_code": "US",
+    "geoname_id": 272103,
+    "iso_code": "LB",
     "names": {
-      "de": "USA",
-      "en": "United States",
-      "es": "Estados Unidos",
-      "fr": "États-Unis",
-      "ja": "アメリカ合衆国",
-      "pt-BR": "Estados Unidos",
-      "ru": "США",
-      "zh-CN": "美国"
+      "de": "Libanon",
+      "en": "Lebanon",
+      "es": "Líbano",
+      "fr": "Liban",
+      "ja": "レバノン共和国",
+      "pt-BR": "Líbano",
+      "ru": "Ливан",
+      "zh-CN": "黎巴嫩"
     }
-  }
+  },
+  "phoneCode": "31",
+  "currency": "EUR"
 }
 ```
 
@@ -121,55 +117,85 @@ Response format when `city` is passed as second argument:
 
 ``` json
 {
-  "continent": {
-    "code": "NA",
-    "geoname_id": 6255149,
+  "city": {
+    "geoname_id": 2759794,
     "names": {
-      "de": "Nordamerika",
-      "en": "North America",
-      "es": "Norteamérica",
-      "fr": "Amérique du Nord",
-      "ja": "北アメリカ",
-      "pt-BR": "América do Norte",
-      "ru": "Северная Америка",
-      "zh-CN": "北美洲"
+      "en": "Amsterdam",
+      "es": "Ámsterdam",
+      "fr": "Amsterdam",
+      "ja": "Amusuterudamu",
+      "pt-BR": "Amesterdã",
+      "ru": "Амстердам",
+      "zh-CN": "阿姆斯特丹"
+    }
+  },
+  "continent": {
+    "code": "EU",
+    "geoname_id": 6255148,
+    "names": {
+      "de": "Europa",
+      "en": "Europe",
+      "es": "Europa",
+      "fr": "Europe",
+      "ja": "ヨーロッパ",
+      "pt-BR": "Europa",
+      "ru": "Европа",
+      "zh-CN": "欧洲"
     }
   },
   "country": {
-    "geoname_id": 6252001,
-    "iso_code": "US",
+    "geoname_id": 2750405,
+    "is_in_european_union": true,
+    "iso_code": "NL",
     "names": {
-      "de": "USA",
-      "en": "United States",
-      "es": "Estados Unidos",
-      "fr": "États-Unis",
-      "ja": "アメリカ合衆国",
-      "pt-BR": "Estados Unidos",
-      "ru": "США",
-      "zh-CN": "美国"
+      "de": "Niederlande",
+      "en": "Netherlands",
+      "es": "Holanda",
+      "fr": "Pays-Bas",
+      "ja": "オランダ王国",
+      "pt-BR": "Holanda",
+      "ru": "Нидерланды",
+      "zh-CN": "荷兰"
     }
   },
   "location": {
-    "accuracy_radius": 1000,
-    "latitude": 37.751,
-    "longitude": -97.822,
-    "time_zone": "America/Chicago"
+    "accuracy_radius": 20,
+    "latitude": 52.3716,
+    "longitude": 4.8883,
+    "time_zone": "Europe/Amsterdam"
+  },
+  "postal": {
+    "code": "1012"
   },
   "registered_country": {
-    "geoname_id": 6252001,
-    "iso_code": "US",
+    "geoname_id": 272103,
+    "iso_code": "LB",
     "names": {
-      "de": "USA",
-      "en": "United States",
-      "es": "Estados Unidos",
-      "fr": "États-Unis",
-      "ja": "アメリカ合衆国",
-      "pt-BR": "Estados Unidos",
-      "ru": "США",
-      "zh-CN": "美国"
+      "de": "Libanon",
+      "en": "Lebanon",
+      "es": "Líbano",
+      "fr": "Liban",
+      "ja": "レバノン共和国",
+      "pt-BR": "Líbano",
+      "ru": "Ливан",
+      "zh-CN": "黎巴嫩"
     }
   },
-  "phoneCode": "1", // This will appear if there is data present in countryinfo/phonecode.json
-  "currency": "USD" // This will appear if there is data present in countryinfo/currency.json
+  "subdivisions": [
+    {
+      "geoname_id": 2749879,
+      "iso_code": "NH",
+      "names": {
+        "de": "Nordholland",
+        "en": "North Holland",
+        "es": "Holanda Septentrional",
+        "fr": "Hollande-Septentrionale",
+        "pt-BR": "Holanda do Norte",
+        "ru": "Северная Голландия"
+      }
+    }
+  ],
+  "phoneCode": "31",
+  "currency": "EUR"
 }
 ```
